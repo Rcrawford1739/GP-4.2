@@ -30,6 +30,15 @@ this.crudService.AddBook(this.bookForm.value)
 .subscribe({
 error: (err) => console.log(err)
 })
+
+onDelete(id: any): any {
+this.crudService.DeleteBook(id)
+.subscribe(res => {
+console.log(res)
+})
+location.reload();
+}
+
 this.ngZone.run(() => this.router.navigateByUrl('/books-list'));
 }
 }
