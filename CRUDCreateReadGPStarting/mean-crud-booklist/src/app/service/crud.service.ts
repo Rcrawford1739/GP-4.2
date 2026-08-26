@@ -25,24 +25,30 @@ export class CrudService {
   
   // Add
   AddBook(data: Book): Observable<any> {
-let API_URL = `${this.REST_API}/add-book`;
-return this.httpClient.post(API_URL, data)
-.pipe(
-catchError(this.handleError)
-);
-}
+    let API_URL = `${this.REST_API}/add-book`;
+    return this.httpClient.post(API_URL, data)
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
 
-// Delete
-DeleteBook(id: any): Observable<any> {
-let API_URL = `${this.REST_API}/delete-book/${id}`;
-return this.httpClient.delete(API_URL, { headers: this.httpHeaders })
-.pipe(
-catchError(this.handleError)
-);
-}
+  // Delete
+  DeleteBook(id: any): Observable<any> {
+    let API_URL = `${this.REST_API}/delete-book/${id}`;
+    return this.httpClient.delete(API_URL, { headers: this.httpHeaders })
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
 
-// Error
-handleError(error: HttpErrorResponse) {
+  // Update
+  UpdateBook(id: any, data: any): Observable<any> {
+    let API_URL = `${this.REST_API}/update-book/${id}`;
+    return this.httpClient.put(API_URL, data, { headers: this.httpHeaders })
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
 
   // Error 
   handleError(error: HttpErrorResponse) {
